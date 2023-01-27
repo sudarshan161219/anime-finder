@@ -56,3 +56,23 @@ body::-webkit-scrollbar-thumb {
     }
   }
   
+
+  .m-0{
+    margin: 0 auto;
+  }
+
+  .w-30{
+    width: 210px;
+  }
+
+
+
+      .stats {
+    overflow-y: hidden;
+  }
+
+  @media (width: 500px) {
+    .stats {
+      display: inline-block;
+    }
+  }

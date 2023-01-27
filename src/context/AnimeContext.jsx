@@ -7,6 +7,7 @@ export const AnimeProvider = ({ children }) => {
   const initialSate = {
     animes: [],
     anime:[],
+    animeDetails:[],
     loading: true,
   };
 

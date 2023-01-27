@@ -13,7 +13,7 @@ const Animes = ({}) => {
   const getAnime = async () => {
     const animes = await AllResult();
     dispatch({ type: "GET_ANIME", payload: animes });
-    // dispatch({type:'CLEAR_ANIME'})
+    // dispatch({type:'CLEAR_ANIME_DETAIL'})
   };
 
   if (!loading) {

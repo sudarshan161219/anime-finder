@@ -8,7 +8,7 @@ const Navbar = () => {
         <div className='flex items-start'>
           <AiFillAlipayCircle className='inline pr-2 text-3xl' />
           <Link to='/' className='text-lg font-bold align-middle'>
-            Anime Wiki
+            AniFinder
           </Link>
         </div>
 

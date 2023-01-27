@@ -2,10 +2,15 @@ import axios from "axios";
 
 
 const ANIME_URL = import.meta.env.VITE_ANIME_URL;
+const ANIME_DETAILS = import.meta.env.VITE_ANIME_DETAILS;
 
 
 const animeUrl = axios.create({
-    baseURL:ANIME_URL,
+    baseURL:ANIME_URL,  
+})
+
+const animeDetaiUrl = axios.create({
+    baseURL:ANIME_DETAILS
 })
 
 // Get Search Results
@@ -29,4 +34,11 @@ export const AllResult = async() => {
 export const SingleResult = async (searchText) => {
     const response = await animeUrl.get(`/anime/${searchText}`);
     return response.data.data
+}
+
+// Get Single Anime Detail
+
+export const SingleAnimeDetail = async (text) => {
+    const response = await animeDetaiUrl.get(`/anime-details/${text}`);
+    return response.data
 }

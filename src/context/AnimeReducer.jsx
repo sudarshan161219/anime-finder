@@ -12,27 +12,27 @@ const AnimeReducer = (state, action) => {
         return {
           ...state,
           anime: action.payload,
-          loading: true,
+          loading:true,
         };
   
+        case "GET_SINGLE_ANIME_DETAIL":
+          return {
+            ...state,
+            animeDetails: action.payload,
+            loading: true,
+          };
+
+          case "CLEAR_ANIME_DETAIL":
+            return {
+              ...state,
+              animeDetails: [],
+            };
 
       case "SET_LOADING":
         return {
           ...state,
           loading: true,
         };
-
-      // case "CLEAR":
-      //   return {
-      //     ...state,
-      //     animes:[]
-      //   };
-
-      //   case "CLEAR_ANIME":
-      //     return {
-      //       ...state,
-      //       anime:[]
-      //     };
 
     default:
       return state;
