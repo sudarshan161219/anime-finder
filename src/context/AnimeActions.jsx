@@ -30,6 +30,18 @@ export const AllResult = async() => {
 }
 
 
+// Get Recent and popular
+export const getRecentAndPopular = async () => {
+    const [recent, popular] = await Promise.all([
+        animeDetaiUrl.get(`/recent-release`),
+        animeDetaiUrl.get(`/popular`)
+    ])
+
+    return {popular: popular.data, recentRelease: recent.data}
+}
+
+
+
 // Get Single 
 export const SingleResult = async (searchText) => {
     const response = await animeUrl.get(`/anime/${searchText}`);

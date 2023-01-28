@@ -17,13 +17,7 @@ const Anime = () => {
     return /\s/.test(s);
   }
 
-  // console.log(hasWhiteSpace(anime.title_english));
-  console.log(anime.title_english);
 
-  // let myString = anime.title_english;
-  // myString = myString.replace(/\s+/g, '-');
-
-  // console.log(myString);
 
   const getAnime = async () => {
     const anime = await SingleResult(params.id);

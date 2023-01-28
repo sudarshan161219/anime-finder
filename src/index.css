@@ -57,15 +57,35 @@ body::-webkit-scrollbar-thumb {
   }
   
 
-  .m-0{
-    margin: 0 auto;
+  body{
+    /* overflow-x: hidden; */
+    /* overflow-y: hidden; */
   }
 
+  /* .m-0{
+    margin: 0 auto;
+  } */
+
+  .card.image-full {
+     overflow: hidden;
+  }
+
+  .card-compact{
+    width: 220px;
+    padding: 1rem;
+  }
   .w-30{
     width: 210px;
   }
 
+  .carousel-item{
+    gap: 2rem;
+  }
 
+.card-img{
+  width: 200px;
+  border-radius: 18px;
+}
 
       .stats {
     overflow-y: hidden;
@@ -74,5 +94,14 @@ body::-webkit-scrollbar-thumb {
   @media (width: 500px) {
     .stats {
       display: inline-block;
+    }
+  }
+
+  @media (min-width:1024px) {
+    .carousel-item{
+      /* width: 100%; */
+ justify-items: center;
+	display: grid;
+	grid-template-columns: repeat(5, minMax(min(80%, 100px), 1fr) );
     }
   }

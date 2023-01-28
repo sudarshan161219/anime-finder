@@ -8,6 +8,8 @@ export const AnimeProvider = ({ children }) => {
     animes: [],
     anime:[],
     animeDetails:[],
+    popularandrecentRelease:[],
+    // recentRelease:{},
     loading: true,
   };
 
