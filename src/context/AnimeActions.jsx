@@ -15,12 +15,8 @@ const animeDetaiUrl = axios.create({
 
 // Get Search Results
 export const SearchResult = async(searchText) => {
-    const params = new URLSearchParams({
-        q: searchText
-    })
-
-    const response = await  animeUrl.get(`/anime?${params}&nsfw`);
-    return response.data.data
+    const response = await  animeDetaiUrl.get(`/search?keyw=${searchText}`);
+    return response.data
 }
 
 // Get All 
@@ -32,24 +28,24 @@ export const AllResult = async() => {
 
 // Get Recent and popular
 export const getRecentAndPopular = async () => {
-    const [recent, popular] = await Promise.all([
+    const [recent, popular, movie] = await Promise.all([
         animeDetaiUrl.get(`/recent-release`),
-        animeDetaiUrl.get(`/popular`)
+        animeDetaiUrl.get(`/popular`),
+        animeDetaiUrl.get(`/anime-movies`)
     ])
 
-    return {popular: popular.data, recentRelease: recent.data}
+    return {popular: popular.data, recentRelease: recent.data, movies: movie.data }
 }
 
 
 
 // Get Single 
 export const SingleResult = async (searchText) => {
-    const response = await animeUrl.get(`/anime/${searchText}`);
+    const response = await animeDetaiUrl.get(`/search?keyw=${searchText}`);
     return response.data.data
 }
 
 // Get Single Anime Detail
-
 export const SingleAnimeDetail = async (text) => {
     const response = await animeDetaiUrl.get(`/anime-details/${text}`);
     return response.data

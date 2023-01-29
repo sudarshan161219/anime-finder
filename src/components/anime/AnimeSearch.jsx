@@ -1,23 +1,28 @@
-import React,{useState, useContext} from 'react'
-import AnimeContext from '../../context/AnimeContext';
-import {SearchResult} from '../../context/AnimeActions'
+import React, { useState, useContext } from "react";
+import AnimeContext from "../../context/AnimeContext";
+import { SearchResult } from "../../context/AnimeActions";
+import AlertContext from "../../context/alert/AlertContext";
 
 const AnimeSearch = () => {
-    const [text, setText] = useState("");
-    const { dispatch} = useContext( AnimeContext )
-
+  const [text, setText] = useState("");
+  const { dispatch } = useContext(AnimeContext);
+  const { setAlert} = useContext(AlertContext);
   const handleSubmit = async (e) => {
-e.preventDefault();
-dispatch({type: 'SET_LOADING'})
-const animes = await SearchResult(text);
-dispatch({type: 'GET_ANIME', payload: animes})
-setText("");
-}
+    e.preventDefault();
+    if (text === "") {
+      setAlert("please enter something");
+    } else {
+      dispatch({ type: "SET_LOADING" });
+      const animes = await SearchResult(text);
+      dispatch({ type: "GET_ANIME", payload: animes });
+      setText("");
+      console.log(animes);
+    }
+  };
 
-    const handleChange = (e) => {
-        setText(e.target.value);
-      };
-    
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
 
   return (
     <div className='grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 mb8 gap-8'>
@@ -42,17 +47,8 @@ setText("");
           </div>
         </form>
       </div>
-    {/* {animes.length > 0  || hello ?  (
-            <div>
-          <button onClick={() => dispatch({type: 'CLEAR'})} className='btn btn-ghost btn-lg'>
-            Clear
-          </button>
-        </div>
-) : null } */}
-
-
     </div>
-  )
-}
+  );
+};
 
-export default AnimeSearch
+export default AnimeSearch;

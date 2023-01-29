@@ -3,6 +3,7 @@ import Loading from "../layouts/Loading";
 import AnimeContext from "../../context/AnimeContext";
 import AnimePopular from "./AnimePopular";
 import AnimeRecentRelease from "./AnimeRecentRelease";
+import AnimeMovies from "./AnimeMovies";
 import { AllResult, getRecentAndPopular } from "../../context/AnimeActions";
 const Animes = ({}) => {
   const { popularandrecentRelease, animes, loading, dispatch } =
@@ -17,16 +18,17 @@ const Animes = ({}) => {
     dispatch({ type: "GET_RECENT_AND_POPULAR", payload: recentAndPopular });
   };
 
-  const { recentRelease, popular } = popularandrecentRelease;
+  const { recentRelease, popular, movies } = popularandrecentRelease;
 
   if (!loading) {
     return (
-      <div className='grid mt-10 '>
+      <div className='grid mt-12 '>
+        {/* recentRelease */}
         <h1 className='badge badge-accent badge-outline badge-lg text-lg font-medium'>
           Recent Release
         </h1>
-        <div className='carousel rounded-box'>
-          <div className=' xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 carousel-item'>
+        <div className=' mt-5 carousel rounded-box'>
+          <div className='xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 carousel-item'>
             {recentRelease
               .map((anime, indx) =>
                 indx < 5 ? (
@@ -37,10 +39,12 @@ const Animes = ({}) => {
           </div>
         </div>
 
-        <h1 className='badge badge-accent badge-outline badge-lg text-lg font-medium'>
+        
+        {/*  popular */}
+        <h1 className=' mt-10 badge badge-secondary badge-outline badge-lg text-lg font-medium'>
           Popular
         </h1>
-        <div className='carousel rounded-box'>
+        <div className=' mt-5 carousel rounded-box'>
           <div className=' xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 carousel-item'>
             {popular
               .map((anime, indx) =>
@@ -49,6 +53,23 @@ const Animes = ({}) => {
               .filter((x) => x)}
           </div>
         </div>
+
+
+        {/* Movies */}
+        <h1 className=' mt-10 badge badge-outline badge-lg text-lg font-medium'>
+        Movies
+        </h1>
+
+        <div className=' mt-5 carousel rounded-box'>
+          <div className=' xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 carousel-item'>
+            {movies
+              .map((anime, indx) =>
+                indx < 10 ? <AnimeMovies key={indx} anime={anime} /> : null
+              )
+              .filter((x) => x)}
+          </div>
+        </div>
+
       </div>
     );
   } else {

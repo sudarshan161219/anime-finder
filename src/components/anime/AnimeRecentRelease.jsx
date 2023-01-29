@@ -18,8 +18,8 @@ const AnimeRecentRelease = ({ anime }) => {
       className='  card card-compact  bg-base-100 shadow-xl image-full'
     >
       <img className='card-img' src={animeImg} alt={animeId} />
-      <div className='card-body  justify-between'>
-        <h2 className='card-title'>{animeTitle}</h2>
+      <div className='card-body  randp   justify-between'>
+        <h2 className='card-title text-gray-50'>{animeTitle}</h2>
         <div className="grid gap-1">
           <div className='text-base font-medium badge badge-primary'>episodes: {episodeNum}</div>
           <div className='text-base font-medium badge badge-secondary'>sub or dub: {subOrDub}</div>

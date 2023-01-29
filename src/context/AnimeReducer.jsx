@@ -41,6 +41,12 @@ const AnimeReducer = (state, action) => {
         loading: true,
       };
 
+      case "CLEAR":
+        return {
+          ...state,
+          animes: []
+        };
+
     default:
       return state;
   }

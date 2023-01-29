@@ -7,11 +7,11 @@
 body::-webkit-scrollbar {
   width: 0.2em;
 }
- 
+
 body::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.445);
 }
- 
+
 body::-webkit-scrollbar-thumb {
   background-color: #2a303c;
   outline: 1px solid rgb(70, 73, 77);
@@ -19,89 +19,116 @@ body::-webkit-scrollbar-thumb {
 
 
 .lds-ring {
-    display: block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-    margin: 0 auto;
-    padding-top: 5rem;
-  }
-  .lds-ring div {
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    width: 64px;
-    height: 64px;
-    margin: 8px;
-    border: 8px solid #fff;
-    border-radius: 50%;
-    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #fff transparent transparent transparent;
-  }
-  .lds-ring div:nth-child(1) {
-    animation-delay: -0.45s;
-  }
-  .lds-ring div:nth-child(2) {
-    animation-delay: -0.3s;
-  }
-  .lds-ring div:nth-child(3) {
-    animation-delay: -0.15s;
-  }
-  @keyframes lds-ring {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-
-  body{
-    /* overflow-x: hidden; */
-    /* overflow-y: hidden; */
-  }
-
-  /* .m-0{
-    margin: 0 auto;
-  } */
-
-  .card.image-full {
-     overflow: hidden;
-  }
-
-  .card-compact{
-    width: 220px;
-    padding: 1rem;
-  }
-  .w-30{
-    width: 210px;
-  }
-
-  .carousel-item{
-    gap: 2rem;
-  }
-
-.card-img{
-  width: 200px;
-  border-radius: 18px;
+  display: block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  padding-top: 5rem;
 }
 
-      .stats {
-    overflow-y: hidden;
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
   }
 
-  @media (width: 500px) {
-    .stats {
-      display: inline-block;
-    }
+  100% {
+    transform: rotate(360deg);
   }
+}
 
-  @media (min-width:1024px) {
-    .carousel-item{
-      /* width: 100%; */
- justify-items: center;
-	display: grid;
-	grid-template-columns: repeat(5, minMax(min(80%, 100px), 1fr) );
-    }
+
+
+.alert {
+  width: 17rem;
+  padding: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.card.image-full {
+  overflow: hidden;
+}
+
+.card-compact {
+  width: 220px;
+  overflow: hidden;
+}
+
+.card-compact:hover {
+  transform: scale(1.1);
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+  color: #fff;
+}
+
+.card-compact .movie-card {
+  padding: 1rem 0;
+}
+
+.card-compact .movie-carousel:hover {
+  transform: scale(1.1);
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.3s;
+}
+
+.card-compact .randp {
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.w-30 {
+  width: 210px;
+}
+
+.carousel-item {
+  gap: 2rem;
+}
+
+.card-img {
+  width: 100%;
+
+  /* border-radius: 18px; */
+}
+
+.stats {
+  overflow-y: hidden;
+}
+
+@media (width: 500px) {
+  .stats {
+    display: inline-block;
   }
+}
+
+@media (min-width:1024px) {
+  .carousel-item {
+    /* width: 100%; */
+    justify-items: center;
+    display: grid;
+    grid-template-columns: repeat(5, minMax(min(80%, 100px), 1fr));
+  }
+}
