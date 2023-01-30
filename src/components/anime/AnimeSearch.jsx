@@ -16,7 +16,6 @@ const AnimeSearch = () => {
       const animes = await SearchResult(text);
       dispatch({ type: "GET_ANIME", payload: animes });
       setText("");
-      console.log(animes);
     }
   };
 

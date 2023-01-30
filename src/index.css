@@ -79,20 +79,12 @@ body::-webkit-scrollbar-thumb {
   overflow: hidden;
 }
 
-.card-compact:hover {
-  transform: scale(1.1);
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
-  color: #fff;
-}
+
 
 .card-compact .movie-card {
   padding: 1rem 0;
 }
 
-.card-compact .movie-carousel:hover {
-  transform: scale(1.1);
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.3s;
-}
 
 .card-compact .randp {
   padding: 1rem;
@@ -118,6 +110,11 @@ body::-webkit-scrollbar-thumb {
   overflow-y: hidden;
 }
 
+.searchresult-card{
+  height: 280px;
+  width: 130px;
+}
+
 @media (width: 500px) {
   .stats {
     display: inline-block;
@@ -131,4 +128,19 @@ body::-webkit-scrollbar-thumb {
     display: grid;
     grid-template-columns: repeat(5, minMax(min(80%, 100px), 1fr));
   }
+
+  .card-compact .movie-carousel:hover {
+    transform: scale(1.1);
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.3s;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .card-compact:hover {
+    transform: scale(1.1);
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+    color: #fff;
+    cursor: pointer;
+  }
+
 }

@@ -5,11 +5,9 @@ const AnimeContext = createContext();
 
 export const AnimeProvider = ({ children }) => {
   const initialSate = {
-    animes: [],
-    anime:[],
+    searchedAnimes: [],
     animeDetails:[],
     popularandrecentRelease:[],
-    // recentRelease:{},
     loading: true,
   };
 

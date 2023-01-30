@@ -1,13 +1,9 @@
 import axios from "axios";
 
 
-const ANIME_URL = import.meta.env.VITE_ANIME_URL;
+// const ANIME_URL = import.meta.env.VITE_ANIME_URL;
 const ANIME_DETAILS = import.meta.env.VITE_ANIME_DETAILS;
 
-
-const animeUrl = axios.create({
-    baseURL:ANIME_URL,  
-})
 
 const animeDetaiUrl = axios.create({
     baseURL:ANIME_DETAILS

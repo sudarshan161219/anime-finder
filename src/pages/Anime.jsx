@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import EpisodeBadge from "../components/anime/EpisodeBadge";
 import AnimeContext from "../context/AnimeContext";
 import { SingleResult, SingleAnimeDetail } from "../context/AnimeActions";
 import Loading from "../components/layouts/Loading";
@@ -7,7 +8,7 @@ import { BsDot } from "react-icons/bs";
 
 const Anime = () => {
   const params = useParams();
-  const { anime, loading, dispatch, animeDetails } = useContext(AnimeContext);
+  const { loading, dispatch, animeDetails } = useContext(AnimeContext);
 
   useEffect(() => {
     getAnime();
@@ -17,33 +18,40 @@ const Anime = () => {
     return /\s/.test(s);
   }
 
-
-
   const getAnime = async () => {
-    const anime = await SingleResult(params.id);
-    const animeDetails = await SingleAnimeDetail(
-      anime.title.replace(/\s+/g, "-")
-    );
-    dispatch({ type: "GET_SINGLE_ANIME", payload: anime });
-
+    const animeDetails = await SingleAnimeDetail(params.id);
     dispatch({
       type: "GET_SINGLE_ANIME_DETAIL",
       payload: animeDetails,
     });
   };
 
-  const { title_english, title_japanese, title, episodes, status, score } =
-    anime;
-  const { animeImg, type, otherNames, synopsis, releasedDate } = animeDetails;
+  const {
+    animeImg,
+    animeTitle,
+    type,
+    otherNames,
+    synopsis,
+    releasedDate,
+    totalEpisodes,
+    status,
+    genres,
+    episodesList,
+  } = animeDetails;
 
   if (loading) {
     return (
       <div className=' grid grid-cols-1 '>
         <div className='mb-10'>
-          <Link to='/' className='btn  btn-ghost  bg-gray-700 text-sm'>
+          <Link
+            to='/'
+            className='btn  btn-ghost  bg-gray-700 text-sm '
+            onClick={() => dispatch({ type: "CLEAR_ANIME_DETAIL" })}
+          >
             back to home
           </Link>
         </div>
+        {/*  */}
         <div className='grid  grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 mb-8 md:gap-8'>
           <div className='card p-5 shadow-lg  bg-base-100'>
             <figure>
@@ -51,41 +59,64 @@ const Anime = () => {
             </figure>
             <div className='mt-4 grid justify-center text-center'>
               <h2 className='grid justify-center font-normal text-sm mb-2'>
-                {title_english === null ? title : title_english}
-                <BsDot className='m-0' />
-                {title_japanese}
+                {animeTitle}
+                <BsDot className='m-0 justify-self-center' />
+                {otherNames}
               </h2>
               <p>{type}</p>
             </div>
           </div>
 
+          {/*  */}
           <div className='mt-5 col-span-2'>
             <h3 className=' mb-5 font-normal text-2xl '> {otherNames}</h3>
             <div className='stats stat lg:stats-horizontal shadow'>
               <div className='stat'>
                 <div className='stat-title'>episodes</div>
-                <div className='stat-value'>{episodes}</div>
+                <div className='stat-value text-base'>{totalEpisodes}</div>
               </div>
+
+              {animeDetails.length !== 0 ? (
+                <div className='stat'>
+                  <div className='stat-title'>genre</div>
+                  {genres.map((genre) => (
+                    <div className='stat-value text-sm'>{genre}</div>
+                  ))}
+                </div>
+              ) : null}
 
               <div className='stat'>
                 <div className='stat-title'>status</div>
-                <div className='stat-value text-secondary'>{status}</div>
+                <div className='stat-value text-base text-secondary'>
+                  {status}
+                </div>
               </div>
 
               <div className='stat'>
                 <div className='stat-title'>released date</div>
-                <div className='stat-value'>{releasedDate}</div>
+                <div className='stat-value text-base'>{releasedDate}</div>
               </div>
 
               <div className='stat'>
-                <div className='stat-title'>score</div>
-                <div className='stat-value'>{score}</div>
+                <div className='stat-title'>type</div>
+                <div className='stat-value text-base'>{type}</div>
               </div>
             </div>
 
             <p className=' mt-5 lg:mt-1 antialiased tracking-wide leading-relaxed'>
               {synopsis}
             </p>
+
+            {animeDetails.length !== 0 ? (
+              <div className='m-1'>
+                <div className='mt-3 p-3 '>
+                  <h1 className='text-lg font-medium'>Episodes</h1>
+                </div>
+                {episodesList.map((ep) => (
+                  <EpisodeBadge ep={ep} key={ep.episodeId} />
+                ))}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

@@ -1,33 +1,28 @@
 const AnimeReducer = (state, action) => {
   switch (action.type) {
-    case "GET_ANIME":
-      return {
-        ...state,
-        animes: action.payload,
-        loading: false,
-      };
-
-    case "GET_SINGLE_ANIME":
-      return {
-        ...state,
-        anime: action.payload,
-        loading: false,
-      };
-
-    case "GET_SINGLE_ANIME_DETAIL":
-      return {
-        ...state,
-        animeDetails: action.payload,
-        loading: false,
-      };
 
     case "GET_RECENT_AND_POPULAR":
       return {
         ...state,
         popularandrecentRelease: action.payload,
         loading: false,
-        // loading: true,
       };
+
+
+    case "GET_ANIME":
+      return {
+        ...state,
+        searchedAnimes: action.payload,
+        loading: true,
+      };
+
+    case "GET_SINGLE_ANIME_DETAIL":
+      return {
+        ...state,
+        animeDetails: action.payload,
+        loading:true,
+      };
+
 
     case "CLEAR_ANIME_DETAIL":
       return {
@@ -44,8 +39,10 @@ const AnimeReducer = (state, action) => {
       case "CLEAR":
         return {
           ...state,
-          animes: []
+          searchedAnimes: []
         };
+
+
 
     default:
       return state;
