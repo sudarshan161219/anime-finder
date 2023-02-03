@@ -46,3 +46,10 @@ export const SingleAnimeDetail = async (text) => {
     const response = await animeDetaiUrl.get(`/anime-details/${text}`);
     return response.data
 }
+
+// Get anime urls
+// export const AnimeUrls = async (name, epnum) => {
+//     //                      https://gogoanime.consumet.stream/vidcdn/watch/naruto-episode-220
+//     const response = await animeDetaiUrl.get(`/vidcdn/watch/${name}-episode-${epnum}`);
+//     return response.data
+// }

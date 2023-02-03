@@ -2,10 +2,10 @@ import React, { useContext, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import EpisodeBadge from "../components/anime/EpisodeBadge";
 import AnimeContext from "../context/AnimeContext";
-import { SingleResult, SingleAnimeDetail } from "../context/AnimeActions";
+import { SingleAnimeDetail } from "../context/AnimeActions";
 import Loading from "../components/layouts/Loading";
 import { BsDot } from "react-icons/bs";
-
+import Player from "../components/anime/AnimePlayer";
 const Anime = () => {
   const params = useParams();
   const { loading, dispatch, animeDetails } = useContext(AnimeContext);
@@ -14,9 +14,9 @@ const Anime = () => {
     getAnime();
   }, []);
 
-  function hasWhiteSpace(s) {
-    return /\s/.test(s);
-  }
+  // function hasWhiteSpace(s) {
+  //   return /\s/.test(s);
+  // }
 
   const getAnime = async () => {
     const animeDetails = await SingleAnimeDetail(params.id);
@@ -79,8 +79,10 @@ const Anime = () => {
               {animeDetails.length !== 0 ? (
                 <div className='stat'>
                   <div className='stat-title'>genre</div>
-                  {genres.map((genre) => (
-                    <div className='stat-value text-sm'>{genre}</div>
+                  {genres.map((genre, indx) => (
+                    <div className='stat-value text-sm' key={indx}>
+                      {genre}
+                    </div>
                   ))}
                 </div>
               ) : null}
@@ -111,10 +113,18 @@ const Anime = () => {
               <div className='m-1'>
                 <div className='mt-3 p-3 '>
                   <h1 className='text-lg font-medium'>Episodes</h1>
+                  <Player img={animeImg} title={animeTitle} />
                 </div>
-                {episodesList.map((ep) => (
-                  <EpisodeBadge ep={ep} key={ep.episodeId} />
-                ))}
+
+                <div className='carousel rounded-box'>
+                  <div className='carousel-item'>
+                    {episodesList.map((ep) => (
+                      <EpisodeBadge ep={ep} key={ep.episodeId} />
+                    ))}
+                  </div>
+                </div>
+
+                
               </div>
             ) : null}
           </div>

@@ -23,6 +23,13 @@ const AnimeReducer = (state, action) => {
         loading:true,
       };
 
+      // case "GET_URL":
+      //   return {
+      //     ...state,
+      //     animeUrls: action.payload,
+      //     loading:true,
+      //   };
+  
 
     case "CLEAR_ANIME_DETAIL":
       return {
