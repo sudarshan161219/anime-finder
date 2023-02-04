@@ -12,10 +12,10 @@ const App = () => {
     <AnimeProvider>
       <AlertProvider>
     <BrowserRouter>
-    <div className='flex flex-col justify-between h-screen'>
+    <div className='flex  flex-col justify-between h-screen'>
       <Navbar />
-<div className='flex flex-col justify-between h-screen'>
-      <main className='container mx-auto px-3 pb-12'>
+<div className='flex  flex-col justify-between h-screen'>
+      <main className='container  mx-auto px-3 pb-12'>
         <Alert />
         <Routes>
           <Route path='/' element={<Home />} />

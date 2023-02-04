@@ -1,20 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Player,
-  Video,
   DefaultUi,
   Ui,
   ClickToPlay,
   Spinner,
   Poster,
   DefaultControls,
-  Hls
+  DblClickFullscreen,
+  Hls,
 } from "@vime/react";
 import Loading from "../layouts/Loading";
-import ReactPlayer from "react-player";
+
 import TapSidesToSeek from "./TapSidesToSeek";
-const AnimePlayer = ({ img, title }) => {
-  // const { loading } = useContext(AnimeContext);
+const AnimePlayer = ({ img, title, episodeList }) => {
+  const [value, setValue] = useState(1);
   const [epUrl, setEpUrl] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -24,10 +24,7 @@ const AnimePlayer = ({ img, title }) => {
     const fetchInfo = async () => {
       try {
         const response = await fetch(
-          `${animeEpUrl}/vidcdn/watch/${title.replace(
-            /\s+/g,
-            "-"
-          )}-episode-${1}`
+          `${animeEpUrl}/vidcdn/watch/${title}-episode-${value}`
         );
 
         const info = await response.json();
@@ -36,55 +33,59 @@ const AnimePlayer = ({ img, title }) => {
       } catch (error) {
         console.log(error);
       }
+
     };
     fetchInfo();
-  }, []);
+  }, [value]);
 
-  // console.log(epUrl.sources_bk.file)
 
-  const { sources, sources_bk } = epUrl;
-  // const url = sources_bk.file
-  // console.log(sources_bk[0]);
-  // const url =  sources_bk.forEach((source) => {source.file})
-  if (!loading) {
+
+  const { sources_bk } = epUrl;
+
+if(loading){
+  return <Loading/>
+}
+
+
     return (
-      <Player>
+      <>
+        <Player>
+          <Hls version='latest' poster={img}>
+            <source
+              data-src={sources_bk[0].file}
+              type={sources_bk[0].type}
+            />
+          </Hls>
 
-        <Hls version="latest"  poster={img}>
-        <source 
-         src={sources_bk[0].file} 
-        type={sources_bk[0].type}
-         />
+          <Ui>
+            <DblClickFullscreen />
+            <ClickToPlay />
+            <Spinner />
+            <Poster />
+            <TapSidesToSeek />
+          </Ui>
 
-        {/* <track
-            default
-            kind='subtitles'
-            src='https://media.vimejs.com/subs/english.vtt'
-            srcLang='en'
-            label={sources_bk[0].label}
-          /> */}
-      </Hls>
+          <DefaultUi noControls>
+            <DefaultControls hideOnMouseLeave activeDuration={2000} />
+          </DefaultUi>
+        </Player>
 
-         
-  
-        <Ui>
-          {/* Vime components. */}
-          <ClickToPlay />
-          <Spinner />
-          <Poster />
-          {/* Custom component. */}
-          <TapSidesToSeek />
-        </Ui>
-
-        <DefaultUi noControls>
-        {/* We setup the default controls and pass in any options. */}
-        <DefaultControls hideOnMouseLeave activeDuration={2000} />
-      </DefaultUi>
-      </Player>
+        <div className='carousel rounded-box'>
+          <div className='carousel-item'>
+            {episodeList.map((ep, indx) => (
+                <button
+                  key={indx}
+                  className='btn gap-1 m-2 text-sm text'
+                  onClick={() => setValue( ep.episodeNum)}
+                >
+                  episode-{ep.episodeNum}
+                </button>
+            ))}
+          </div>
+        </div>
+      </>
     );
-  } else {
-    <Loading />;
-  }
+
 };
 
 export default AnimePlayer;

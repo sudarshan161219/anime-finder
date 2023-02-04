@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import EpisodeBadge from "../components/anime/EpisodeBadge";
 import AnimeContext from "../context/AnimeContext";
 import { SingleAnimeDetail } from "../context/AnimeActions";
 import Loading from "../components/layouts/Loading";
@@ -14,9 +13,6 @@ const Anime = () => {
     getAnime();
   }, []);
 
-  // function hasWhiteSpace(s) {
-  //   return /\s/.test(s);
-  // }
 
   const getAnime = async () => {
     const animeDetails = await SingleAnimeDetail(params.id);
@@ -38,6 +34,8 @@ const Anime = () => {
     genres,
     episodesList,
   } = animeDetails;
+
+
 
   if (loading) {
     return (
@@ -106,25 +104,17 @@ const Anime = () => {
             </div>
 
             <p className=' mt-5 lg:mt-1 antialiased tracking-wide leading-relaxed'>
+              <span className="text-lg font-medium" >synopsis</span> <br />
               {synopsis}
             </p>
 
             {animeDetails.length !== 0 ? (
               <div className='m-1'>
                 <div className='mt-3 p-3 '>
-                  <h1 className='text-lg font-medium'>Episodes</h1>
-                  <Player img={animeImg} title={animeTitle} />
+                  <h1 className='text-lg mb-3 font-medium'>Episodes</h1>
+                  <Player img={animeImg} title={params.id} episodeList={episodesList} />
                 </div>
-
-                <div className='carousel rounded-box'>
-                  <div className='carousel-item'>
-                    {episodesList.map((ep) => (
-                      <EpisodeBadge ep={ep} key={ep.episodeId} />
-                    ))}
-                  </div>
-                </div>
-
-                
+       
               </div>
             ) : null}
           </div>
