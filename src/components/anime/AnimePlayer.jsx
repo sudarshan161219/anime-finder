@@ -10,6 +10,7 @@ import {
   DblClickFullscreen,
   Hls,
 } from "@vime/react";
+import '@vime/core/themes/default.css';
 import Loading from "../layouts/Loading";
 
 import TapSidesToSeek from "./TapSidesToSeek";
