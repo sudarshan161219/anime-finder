@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import {
-  Player,
-  DefaultUi,
-  Ui,
-  ClickToPlay,
-  Spinner,
-  Poster,
-  DefaultControls,
-  DblClickFullscreen,
-  Hls,
-} from "@vime/react";
-import '@vime/core/themes/default.css';
+// import {
+//   Player,
+//   DefaultUi,
+//   Ui,
+//   ClickToPlay,
+//   Spinner,
+//   Poster,
+//   DefaultControls,
+//   DblClickFullscreen,
+//   Hls,
+// } from "@vime/react";
+// import '@vime/core/themes/default.css';
 import Loading from "../layouts/Loading";
 
 import TapSidesToSeek from "./TapSidesToSeek";
@@ -50,7 +50,7 @@ if(loading){
 
     return (
       <>
-        <Player>
+        {/* <Player>
           <Hls version='latest' poster={img}>
             <source
               data-src={sources_bk[0].file}
@@ -69,7 +69,7 @@ if(loading){
           <DefaultUi noControls>
             <DefaultControls hideOnMouseLeave activeDuration={2000} />
           </DefaultUi>
-        </Player>
+        </Player> */}
 
         <div className='carousel rounded-box'>
           <div className='carousel-item'>

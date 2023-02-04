@@ -112,7 +112,7 @@ const Anime = () => {
               <div className='m-1'>
                 <div className='mt-3 p-3 '>
                   <h1 className='text-lg mb-3 font-medium'>Episodes</h1>
-                  <Player img={animeImg} title={params.id} episodeList={episodesList} />
+                  {/* <Player img={animeImg} title={params.id} episodeList={episodesList} /> */}
                 </div>
        
               </div>

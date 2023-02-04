@@ -5,7 +5,7 @@ import { About,  NotFound, Anime, Home  } from './pages';
 import { AnimeProvider } from './context/AnimeContext';
 import { AlertProvider } from './context/alert/AlertContext'
 import Alert from './components/anime/Alert';
-import '@vime/core/themes/default.css';
+// import '@vime/core/themes/default.css';
 
 const App = () => { 
   return (
