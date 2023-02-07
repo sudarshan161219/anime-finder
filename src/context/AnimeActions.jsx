@@ -27,7 +27,7 @@ export const getRecentAndPopular = async () => {
     const [recent, popular, movie] = await Promise.all([
         animeDetaiUrl.get(`/recent-release`),
         animeDetaiUrl.get(`/popular`),
-        animeDetaiUrl.get(`/anime-movies`)
+        animeDetaiUrl.get(`/anime-movies?page=2`)
     ])
 
     return {popular: popular.data, recentRelease: recent.data, movies: movie.data }

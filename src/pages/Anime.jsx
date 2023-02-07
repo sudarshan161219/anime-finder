@@ -5,6 +5,8 @@ import { SingleAnimeDetail } from "../context/AnimeActions";
 import Loading from "../components/layouts/Loading";
 import { BsDot } from "react-icons/bs";
 import Player from "../components/anime/AnimePlayer";
+
+
 const Anime = () => {
   const params = useParams();
   const { loading, dispatch, animeDetails } = useContext(AnimeContext);
@@ -50,10 +52,10 @@ const Anime = () => {
           </Link>
         </div>
         {/*  */}
-        <div className='grid  grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 mb-8 md:gap-8'>
+        <div className='grid  grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 mb-8 md:gap-8 items-start	'>
           <div className='card p-5 shadow-lg  bg-base-100'>
             <figure>
-              <img className='w-30' src={animeImg} alt='hello' />
+              <img className='w-30' src={animeImg} alt={animeTitle} />
             </figure>
             <div className='mt-4 grid justify-center text-center'>
               <h2 className='grid justify-center font-normal text-sm mb-2'>
@@ -111,8 +113,8 @@ const Anime = () => {
             {animeDetails.length !== 0 ? (
               <div className='m-1'>
                 <div className='mt-3 p-3 '>
-                  <h1 className='text-lg mb-3 font-medium'>Episodes</h1>
-                  {/* <Player img={animeImg} title={params.id} episodeList={episodesList} /> */}
+
+                  <Player img={animeImg} title={params.id} episodeList={episodesList} />
                 </div>
        
               </div>

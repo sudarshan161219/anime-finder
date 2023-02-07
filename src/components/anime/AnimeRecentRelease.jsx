@@ -22,7 +22,7 @@ const AnimeRecentRelease = ({ anime }) => {
         <h2 className='card-title text-gray-50'>{animeTitle}</h2>
         <div className="grid gap-1">
           <div className='text-base font-medium badge badge-primary'>episodes: {episodeNum}</div>
-          <div className='text-base font-medium badge badge-secondary'>sub or dub: {subOrDub}</div>
+          <div className='text-base font-medium badge badge-secondary'>{subOrDub}</div>
         </div>
       </div>
     </Link>

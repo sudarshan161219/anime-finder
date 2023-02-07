@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 const AnimeMovies = ({ anime }) => {
   const { animeId, releasedDate, animeTitle, animeImg, episodeUrl } = anime;
 
-  return (
-    <Link
+  
+      return (
+
+   <Link
       to={`/${animeId}`}
       className='card movie-carousel card-compact w-96 bg-base-100 shadow-xl'
     >
@@ -14,7 +16,11 @@ const AnimeMovies = ({ anime }) => {
         <h2 className=' text-sm card-title'>{animeTitle}</h2>
       </div>
     </Link>
-  );
+  )
+  
+
+
+
 };
 
 export default AnimeMovies;

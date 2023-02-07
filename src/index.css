@@ -75,6 +75,18 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+.react-player__preview {
+  width: 100%;
+      height: 100%;
+      background-size: contain;
+      background-position: center center;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url(https://gogocdn.net/cover/boruto-naruto-next-generations.png);
+  }
+  
 .palyer-div{
   width: 100px;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const AnimePopular = ({ anime }) => {
-  const { animeId, releasedDate, animeTitle, animeImg, episodeUrl } = anime;
+  const { animeId, releasedDate, animeTitle, animeImg} = anime;
 
   return (
     <Link
