@@ -4,7 +4,7 @@ const AnimeReducer = (state, action) => {
     case "GET_RECENT_AND_POPULAR":
       return {
         ...state,
-        popularandrecentRelease: action.payload,
+        popularandrecentReleaseAndAiring: action.payload,
         loading: false,
       };
 
@@ -23,10 +23,10 @@ const AnimeReducer = (state, action) => {
         loading:true,
       };
 
-      // case "GET_URL":
+      // case "GET_TOP_AIRING":
       //   return {
       //     ...state,
-      //     animeUrls: action.payload,
+      //     animeDetails: action.payload,
       //     loading:true,
       //   };
   

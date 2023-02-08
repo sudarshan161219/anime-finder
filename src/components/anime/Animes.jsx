@@ -4,9 +4,13 @@ import AnimeContext from "../../context/AnimeContext";
 import AnimePopular from "./AnimePopular";
 import AnimeRecentRelease from "./AnimeRecentRelease";
 import AnimeMovies from "./AnimeMovies";
-import { AllResult, getRecentAndPopular } from "../../context/AnimeActions";
+import TopairingAnime from "./TopairingAnime.";
+import {
+  AllResult,
+  getRecentAndPopularAndAiring,
+} from "../../context/AnimeActions";
 const Animes = ({}) => {
-  const { popularandrecentRelease, animes, loading, dispatch } =
+  const { popularandrecentReleaseAndAiring, animes, loading, dispatch } =
     useContext(AnimeContext);
 
   useEffect(() => {
@@ -14,11 +18,15 @@ const Animes = ({}) => {
   }, []);
 
   const getAnime = async () => {
-    const recentAndPopular = await getRecentAndPopular();
-    dispatch({ type: "GET_RECENT_AND_POPULAR", payload: recentAndPopular });
+    const recentAndPopularAndAiring = await getRecentAndPopularAndAiring();
+    dispatch({
+      type: "GET_RECENT_AND_POPULAR",
+      payload: recentAndPopularAndAiring,
+    });
   };
 
-  const { recentRelease, popular, movies } = popularandrecentRelease;
+  const { recentRelease, popular, movies, topAiring } =
+    popularandrecentReleaseAndAiring;
 
   if (!loading) {
     return (
@@ -27,37 +35,41 @@ const Animes = ({}) => {
         <h1 className='badge badge-accent badge-outline badge-lg text-lg font-medium'>
           Recent Release
         </h1>
-        <div className=' mt-5 carousel rounded-box'>
+        <div className=' mt-5 carousel rounded-box py-4'>
           <div className='xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 carousel-item'>
-            {recentRelease
-              .map((anime, indx) =>
-                indx < 5 ? (
-                  <AnimeRecentRelease key={indx} anime={anime} />
-                ) : null
-              )
-              .filter((x) => x)}
+            {recentRelease.map((anime, indx) => (
+              <AnimeRecentRelease key={indx} anime={anime} />
+            ))}
           </div>
         </div>
 
-        
         {/*  popular */}
         <h1 className=' mt-10 badge badge-secondary badge-outline badge-lg text-lg font-medium'>
           Popular
         </h1>
-        <div className=' mt-5 carousel rounded-box'>
+        <div className=' mt-5 carousel rounded-box py-4'>
           <div className=' xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 carousel-item'>
-            {popular
-              .map((anime, indx) =>
-                indx < 10 ? <AnimePopular key={indx} anime={anime} /> : null
-              )
-              .filter((x) => x)}
+            {popular.map((anime, indx) =>
+              indx < 10 ? <AnimePopular key={indx} anime={anime} /> : null
+            )}
           </div>
         </div>
 
+        {/* Top Airing*/}
+        <h1 className=' mt-10 badge badge-secondary badge-outline badge-lg text-lg font-medium'>
+          Top Airing
+        </h1>
+        <div className=' mt-5 carousel rounded-box py-4'>
+          <div className=' xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 carousel-item'>
+            {topAiring.map((anime, indx) =>
+              indx < 10 ? <TopairingAnime key={indx} anime={anime} /> : null
+            )}
+          </div>
+        </div>
 
         {/* Movies */}
         <h1 className=' mt-10 badge badge-outline badge-lg text-lg font-medium'>
-        Movies
+          Movies
         </h1>
 
         <div className=' mt-5 carousel rounded-box'>
@@ -69,7 +81,6 @@ const Animes = ({}) => {
               .filter((x) => x)}
           </div>
         </div>
-
       </div>
     );
   } else {

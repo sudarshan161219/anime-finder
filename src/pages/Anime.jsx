@@ -6,7 +6,6 @@ import Loading from "../components/layouts/Loading";
 import { BsDot } from "react-icons/bs";
 import Player from "../components/anime/AnimePlayer";
 
-
 const Anime = () => {
   const params = useParams();
   const { loading, dispatch, animeDetails } = useContext(AnimeContext);
@@ -14,7 +13,6 @@ const Anime = () => {
   useEffect(() => {
     getAnime();
   }, []);
-
 
   const getAnime = async () => {
     const animeDetails = await SingleAnimeDetail(params.id);
@@ -36,8 +34,6 @@ const Anime = () => {
     genres,
     episodesList,
   } = animeDetails;
-
-
 
   if (loading) {
     return (
@@ -76,17 +72,6 @@ const Anime = () => {
                 <div className='stat-value text-base'>{totalEpisodes}</div>
               </div>
 
-              {animeDetails.length !== 0 ? (
-                <div className='stat'>
-                  <div className='stat-title'>genre</div>
-                  {genres.map((genre, indx) => (
-                    <div className='stat-value text-sm' key={indx}>
-                      {genre}
-                    </div>
-                  ))}
-                </div>
-              ) : null}
-
               <div className='stat'>
                 <div className='stat-title'>status</div>
                 <div className='stat-value text-base text-secondary'>
@@ -104,19 +89,33 @@ const Anime = () => {
                 <div className='stat-value text-base'>{type}</div>
               </div>
             </div>
+            {animeDetails.length !== 0 ? (
+              <>
+                <h1 className="text-lg font-medium mt-5 lg:mt-1">Genre</h1>
+                <ul className='stat flex flex-wrap gap-3 justify-start'>
+                  {genres.map((genre, indx) => (
+                    <li className='stat-value text-sm badge badge-lg ' key={indx}>
+                      {genre}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
 
             <p className=' mt-5 lg:mt-1 antialiased tracking-wide leading-relaxed'>
-              <span className="text-lg font-medium" >synopsis</span> <br />
+              <span className='text-lg font-medium'>Synopsis</span> <br />
               {synopsis}
             </p>
 
             {animeDetails.length !== 0 ? (
               <div className='m-1'>
                 <div className='mt-3 p-3 '>
-
-                  <Player img={animeImg} title={params.id} episodeList={episodesList} />
+                  <Player
+                    img={animeImg}
+                    title={params.id}
+                    episodeList={episodesList}
+                  />
                 </div>
-       
               </div>
             ) : null}
           </div>
