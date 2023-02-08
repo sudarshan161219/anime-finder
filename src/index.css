@@ -178,10 +178,15 @@ body::-webkit-scrollbar-thumb {
 }
 
 .episode-container{
-    height:auto;
+    padding: 0.5rem 0;
+    height: 250px;
     overflow-x: auto;
 }
 
+.short-.episode-container{
+  height:100px;
+  overflow-x: auto;
+}
 
 .episode-container::-webkit-scrollbar {
   width: 0.2em;
