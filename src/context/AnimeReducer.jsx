@@ -13,23 +13,29 @@ const AnimeReducer = (state, action) => {
       return {
         ...state,
         searchedAnimes: action.payload,
-        loading: true,
+        loading:  false,
       };
 
     case "GET_SINGLE_ANIME_DETAIL":
       return {
         ...state,
         animeDetails: action.payload,
-        loading:true,
+        loading: false,
       };
 
-      // case "GET_TOP_AIRING":
-      //   return {
-      //     ...state,
-      //     animeDetails: action.payload,
-      //     loading:true,
-      //   };
+
+      case "LOCAL_STORAGE":
+        return {
+          ...state,
+          localAnime:  action.payload,
+        };
   
+
+      case "SET_LOADING":
+        return {
+          ...state,
+          loading: true,
+        };
 
     case "CLEAR_ANIME_DETAIL":
       return {
@@ -37,11 +43,7 @@ const AnimeReducer = (state, action) => {
         animeDetails: [],
       };
 
-    case "SET_LOADING":
-      return {
-        ...state,
-        loading: true,
-      };
+
 
       case "CLEAR":
         return {

@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
 import { AnimeSearch, Animes, AnimeSearchResults } from "../components";
-import Loading from "../components/layouts/Loading";
 import AnimeContext from "../context/AnimeContext";
 const Home = () => {
-  const { searchedAnimes, dispatch, loading } = useContext(AnimeContext);
+  const { searchedAnimes, dispatch } = useContext(AnimeContext);
 
-  // console.log(searchedAnimes.length);
 
   return (
     <div>

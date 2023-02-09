@@ -11,16 +11,18 @@ const Anime = () => {
   const { loading, dispatch, animeDetails } = useContext(AnimeContext);
 
   useEffect(() => {
+    dispatch({ type: "SET_LOADING" });
+    const getAnime = async () => {
+      const animeDetails = await SingleAnimeDetail(params.id);
+      dispatch({
+        type: "GET_SINGLE_ANIME_DETAIL",
+        payload: animeDetails,
+      });
+    };
+  
     getAnime();
   }, []);
 
-  const getAnime = async () => {
-    const animeDetails = await SingleAnimeDetail(params.id);
-    dispatch({
-      type: "GET_SINGLE_ANIME_DETAIL",
-      payload: animeDetails,
-    });
-  };
 
   const {
     animeImg,
@@ -35,7 +37,12 @@ const Anime = () => {
     episodesList,
   } = animeDetails;
 
-  if (loading) {
+  if(loading){
+    return <Loading />
+  }
+
+
+  // if (loading) {
     return (
       <div className=' grid grid-cols-1 '>
         <div className='mb-10'>
@@ -122,9 +129,9 @@ const Anime = () => {
         </div>
       </div>
     );
-  } else {
-    return <Loading />;
-  }
+  // } else {
+  //   return <Loading />;
+  // }
 };
 
 export default Anime;

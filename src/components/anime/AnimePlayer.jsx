@@ -16,7 +16,6 @@ const AnimePlayer = ({ img, title, episodeList }) => {
         const info = await response.json();
         setEpUrl(info);
         setLoading(false);
-        console.log(info);
       } catch (error) {
         console.log(error);
       }
