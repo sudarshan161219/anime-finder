@@ -24,10 +24,11 @@ const AnimeReducer = (state, action) => {
       };
 
 
-      case "LOCAL_STORAGE":
+      case "GET_WALLS":
         return {
           ...state,
-          localAnime:  action.payload,
+          walls:  action.payload,
+          loading: false,
         };
   
 

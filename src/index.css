@@ -200,3 +200,26 @@ body::-webkit-scrollbar-thumb {
   background-color: #2a303c;
   outline: 1px solid rgb(70, 73, 77);
 }
+
+/* .img-card{
+  width: 300px;
+  /* height: 500px; */
+  /* padding: 0.5rem; */
+/* } */
+
+/* .img-card2{
+  width: 100%; */
+/* }  */
+
+.masonry-container {
+  column-count: 3;
+  column-gap: 15px;
+ }
+ .masonry-item {
+  display: inline-block;
+  width: 100%;
+ }
+ .masonry-item img {
+  display:block;
+  width: 100%;
+ }

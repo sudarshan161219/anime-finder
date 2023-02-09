@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Navbar, Footer } from "./components/index";
+import { Navbar, Footer, WallPapers } from "./components/index";
 import { About, NotFound, Anime, Home } from "./pages";
 import { AnimeProvider } from "./context/AnimeContext";
 import { AlertProvider } from "./context/alert/AlertContext";
@@ -22,6 +22,7 @@ const App = () => {
                     <Route path='/' element={<Home />} />
                     <Route path='/about' element={<About />} />
                     <Route path='/:id' element={<Anime />} />
+                    <Route path='/wallpapers' element={<WallPapers  />} />
                     <Route path='/notfound' element={<NotFound />} />
                     <Route path='/*' element={<NotFound />} />
                   </Routes>

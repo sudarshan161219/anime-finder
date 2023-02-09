@@ -13,6 +13,9 @@ const Navbar = () => {
         </div>
 
         <div className='flex items-start gap-10 '>
+        <Link to='/wallpapers' className='text-sm font-semibold hover:text-gray-200 align-middle'>
+            Wallpapers
+          </Link>
           <Link to='/' className='text-sm font-semibold hover:text-gray-200 align-middle'>
             Home
           </Link>
