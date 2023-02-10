@@ -5,12 +5,15 @@ import { About, NotFound, Anime, Home } from "./pages";
 import { AnimeProvider } from "./context/AnimeContext";
 import { AlertProvider } from "./context/alert/AlertContext";
 import Alert from "./components/anime/Alert";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const App = () => {
   return (
     <>
       <AnimeProvider>
+    <ToastContainer />
         <AlertProvider>
           <BrowserRouter>
             <div className='flex  flex-col justify-between h-screen'>
@@ -22,7 +25,7 @@ const App = () => {
                     <Route path='/' element={<Home />} />
                     <Route path='/about' element={<About />} />
                     <Route path='/:id' element={<Anime />} />
-                    <Route path='/wallpapers' element={<WallPapers  />} />
+                    {/* <Route path='/wallpapers' element={<WallPapers  />} /> */}
                     <Route path='/notfound' element={<NotFound />} />
                     <Route path='/*' element={<NotFound />} />
                   </Routes>

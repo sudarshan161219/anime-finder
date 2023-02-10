@@ -29,7 +29,7 @@ export const getRecentAndPopularAndAiring = async () => {
   const [recent, popular, movie, toairing] = await Promise.all([
     animeDetaiUrl.get("/recent-release"),
     animeDetaiUrl.get("/popular"),
-    animeDetaiUrl.get("/anime-movies?page=2"),
+    animeDetaiUrl.get("/anime-movies?page=3"),
     animeDetaiUrl.get("/top-airing"),
   ]);
 

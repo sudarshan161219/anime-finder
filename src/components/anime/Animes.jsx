@@ -85,7 +85,7 @@ const Animes = ({}) => {
           Movies
         </h1>
 
-        <div className=' mt-5 carousel rounded-box'>
+        <div className=' mt-5 carousel rounded-box  py-4'>
           <div className=' xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 carousel-item'>
             {movies
               .map((anime, indx) =>

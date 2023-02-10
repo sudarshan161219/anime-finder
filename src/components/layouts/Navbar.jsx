@@ -8,14 +8,14 @@ const Navbar = () => {
         <div className='flex items-start'>
           <AiFillAlipayCircle className='inline pr-2 text-3xl' />
           <Link to='/' className='text-lg font-bold align-middle'>
-            AniFinder
+            AniFinder 
           </Link>
         </div>
 
         <div className='flex items-start gap-10 '>
-        <Link to='/wallpapers' className='text-sm font-semibold hover:text-gray-200 align-middle'>
+        {/* <Link to='/wallpapers' className='text-sm font-semibold hover:text-gray-200 align-middle'>
             Wallpapers
-          </Link>
+          </Link> */}
           <Link to='/' className='text-sm font-semibold hover:text-gray-200 align-middle'>
             Home
           </Link>
